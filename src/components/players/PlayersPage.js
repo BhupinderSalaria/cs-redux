@@ -5,8 +5,14 @@ import * as coachActions from "../../redux/actions/coachActions";
 import PropTypes from "prop-types";
 import { bindActionCreators } from "redux";
 import PlayerList from "./PlayersList";
+import { Redirect } from "react-router-dom";
+// import Spinner from "../common/Spinner";
 
 class PlayersPage extends React.Component {
+  state = {
+    redirectToAddPlayerPage: false
+  };
+
   componentDidMount() {
     if (this.props.players.length === 0) {
       this.props.actions.loadPlayers().catch(error => {
@@ -24,7 +30,17 @@ class PlayersPage extends React.Component {
   render() {
     return (
       <>
+        {this.state.redirectToAddPlayerPage && <Redirect to="/player" />}
         <h2>Players</h2>
+        {/* <Spinner /> */}
+        <button
+          style={{ marginBottom: 20 }}
+          className="btn btn-primary add-player"
+          onClick={() => this.setState({ redirectToAddPlayerPage: true })}
+        >
+          ADD PLAYER
+        </button>
+
         <PlayerList players={this.props.players} />
       </>
     );
