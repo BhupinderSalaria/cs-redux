@@ -6,6 +6,8 @@ import PropTypes from "prop-types";
 import PlayerForm from "./PlayerForm";
 import { newPlayer } from "../../../tools/mockData";
 import { getplayerByid } from "../../api/playerApi";
+import Spinner from "../common/Spinner";
+import { toast } from "react-toastify";
 
 function ManagePlayerPage({
   players,
@@ -18,6 +20,7 @@ function ManagePlayerPage({
 }) {
   const [player, setPlayer] = useState({ ...props.player });
   const [errors, setErrors] = useState({});
+  const [saving, setSaving] = useState(false);
 
   useEffect(() => {
     if (players.length === 0) {
@@ -44,19 +47,24 @@ function ManagePlayerPage({
   }
 
   function handleSave(event) {
+    setSaving(true);
     event.preventDefault();
     savePlayer(player).then(() => {
+      toast.success("Player Saved.");
       history.push("/players");
     });
   }
 
-  return (
+  return coaches.length == 0 || players.length == 0 ? (
+    <Spinner />
+  ) : (
     <PlayerForm
       player={player}
       errors={errors}
       coaches={coaches}
       onChange={handleChange}
       onSave={handleSave}
+      saving={saving}
     />
   );
 }

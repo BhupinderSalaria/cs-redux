@@ -2,19 +2,18 @@
   "players": [
     {
       "id": 1,
-      "name": "Virat Kohali",
+      "name": "Virat Kohali gg  jjj",
       "state": "Punjab",
       "coachId": 1,
-      "game": "Cricketff",
+      "game": "Cricket",
       "authorId": null
     },
     {
       "id": 2,
-      "name": "M S Dhoni io",
+      "name": "M S Dhoni",
       "state": "Jharkhandh",
       "coachId": 1,
-      "game": "Cricket",
-      "authorId": null
+      "game": "Cricket"
     },
     {
       "id": 3,
@@ -71,15 +70,6 @@
       "state": "andhra Pardesh",
       "coachId": 3,
       "game": "Basketball"
-    },
-    {
-      "id": 11,
-      "name": "ddsd",
-      "coachId": 1,
-      "game": "dfsdf",
-      "authorId": null,
-      "createdAt": 1565084221538,
-      "slug": "ddsd"
     }
   ],
   "coaches": [

@@ -1,9 +1,11 @@
 import { combineReducers } from "redux";
 import players from "./playerReducer";
 import coaches from "./coachReducer";
+import apiCallsInProgress from "./apiStatusReducer";
 
 const rootReducer = combineReducers({
   players,
-  coaches
+  coaches,
+  apiCallsInProgress
 });
 export default rootReducer;

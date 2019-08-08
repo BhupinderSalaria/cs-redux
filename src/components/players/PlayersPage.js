@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 import { bindActionCreators } from "redux";
 import PlayerList from "./PlayersList";
 import { Redirect } from "react-router-dom";
-// import Spinner from "../common/Spinner";
+import Spinner from "../common/Spinner";
 
 class PlayersPage extends React.Component {
   state = {
@@ -32,16 +32,21 @@ class PlayersPage extends React.Component {
       <>
         {this.state.redirectToAddPlayerPage && <Redirect to="/player" />}
         <h2>Players</h2>
-        {/* <Spinner /> */}
-        <button
-          style={{ marginBottom: 20 }}
-          className="btn btn-primary add-player"
-          onClick={() => this.setState({ redirectToAddPlayerPage: true })}
-        >
-          ADD PLAYER
-        </button>
+        {this.props.loading ? (
+          <Spinner />
+        ) : (
+          <>
+            <button
+              style={{ marginBottom: 20 }}
+              className="btn btn-primary add-player"
+              onClick={() => this.setState({ redirectToAddPlayerPage: true })}
+            >
+              ADD PLAYER
+            </button>
 
-        <PlayerList players={this.props.players} />
+            <PlayerList players={this.props.players} />
+          </>
+        )}
       </>
     );
   }
@@ -50,7 +55,8 @@ class PlayersPage extends React.Component {
 PlayersPage.propTypes = {
   players: PropTypes.array.isRequired,
   coaches: PropTypes.array.isRequired,
-  actions: PropTypes.object.isRequired
+  actions: PropTypes.object.isRequired,
+  loading: PropTypes.bool.isRequired
 };
 
 function mapStateToProps(state) {
@@ -65,7 +71,8 @@ function mapStateToProps(state) {
               coachName: state.coaches.find(a => a.id === player.coachId).name
             };
           }),
-    coaches: state.coaches
+    coaches: state.coaches,
+    loading: state.apiCallsInProgress > 0
   };
 }
 
