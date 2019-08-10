@@ -72,9 +72,9 @@ const players = [
 ];
 
 const coaches = [
-  { id: 1, name: "Cory House" },
-  { id: 2, name: "Scott Allen" },
-  { id: 3, name: "Dan Wahlin" }
+  { id: 1, name: "Cory House", gameId: 1, experience: 10 },
+  { id: 2, name: "Scott Allen", gameId: 2, experience: 14 },
+  { id: 3, name: "Dan Wahlin", gameId: 3, experience: 13 }
 ];
 
 const newPlayer = {

@@ -2,13 +2,15 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-const PlayersList = ({ players }) => (
+const PlayersList = ({ players, onDeleteClick }) => (
   <table className="table">
     <thead>
       <tr>
-        <td>Name</td>
-        <td>Coach Name</td>
-        <td>Game</td>
+        <th />
+        <th>Name</th>
+        <th>Coach Name</th>
+        <th>Game</th>
+        <th />
       </tr>
     </thead>
     <tbody>
@@ -20,6 +22,14 @@ const PlayersList = ({ players }) => (
             </td>
             <td>{player.coachName}</td>
             <td>{player.game}</td>
+            <td>
+              <button
+                className="btn btn-outline-danger"
+                onClick={() => onDeleteClick(player)}
+              >
+                DELETE
+              </button>
+            </td>
           </tr>
         );
       })}
@@ -35,7 +45,8 @@ PlayersList.propTypes = {
       coachId: PropTypes.number.isRequired,
       game: PropTypes.string.isRequired
     })
-  ).isRequired
+  ).isRequired,
+  onDeleteClick: PropTypes.func.isRequired
 };
 
 export default PlayersList;

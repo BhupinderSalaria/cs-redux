@@ -5,7 +5,7 @@ import { loadCoaches } from "../../redux/actions/coachActions";
 import PropTypes from "prop-types";
 import PlayerForm from "./PlayerForm";
 import { newPlayer } from "../../../tools/mockData";
-import { getplayerByid } from "../../api/playerApi";
+//import { getplayerByid } from "../../api/playerApi";
 import Spinner from "../common/Spinner";
 import { toast } from "react-toastify";
 
@@ -46,13 +46,31 @@ function ManagePlayerPage({
     }));
   }
 
+  function formIsValid() {
+    const { name, coachId, game } = player;
+    const errors = {};
+
+    if (!name) errors.name = "Name is Required";
+    if (!coachId) errors.coach = "Coach is Required";
+    if (!game) errors.game = "Game is Required";
+
+    setErrors(errors);
+    return Object.keys(errors).length === 0;
+  }
+
   function handleSave(event) {
-    setSaving(true);
     event.preventDefault();
-    savePlayer(player).then(() => {
-      toast.success("Player Saved.");
-      history.push("/players");
-    });
+    if (!formIsValid()) return;
+    setSaving(true);
+    savePlayer(player)
+      .then(() => {
+        toast.success("Player Saved.");
+        history.push("/players");
+      })
+      .catch(error => {
+        setSaving(false);
+        setErrors({ onSave: error.message });
+      });
   }
 
   return coaches.length == 0 || players.length == 0 ? (

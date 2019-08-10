@@ -7,6 +7,7 @@ import { bindActionCreators } from "redux";
 import PlayerList from "./PlayersList";
 import { Redirect } from "react-router-dom";
 import Spinner from "../common/Spinner";
+import { toast } from "react-toastify";
 
 class PlayersPage extends React.Component {
   state = {
@@ -27,6 +28,15 @@ class PlayersPage extends React.Component {
     }
   }
 
+  handleDeletePlayer = async player => {
+    toast.success("Player deleted");
+    try {
+      await this.props.actions.deletePlayer(player);
+    } catch (error) {
+      toast.error("Delete failed. " + error.message, { autoClose: false });
+    }
+  };
+
   render() {
     return (
       <>
@@ -44,7 +54,10 @@ class PlayersPage extends React.Component {
               ADD PLAYER
             </button>
 
-            <PlayerList players={this.props.players} />
+            <PlayerList
+              onDeleteClick={this.handleDeletePlayer}
+              players={this.props.players}
+            />
           </>
         )}
       </>
@@ -80,7 +93,8 @@ function mapDispatchToProps(dispatch) {
   return {
     actions: {
       loadPlayers: bindActionCreators(playerActions.loadPlayers, dispatch),
-      loadCoaches: bindActionCreators(coachActions.loadCoaches, dispatch)
+      loadCoaches: bindActionCreators(coachActions.loadCoaches, dispatch),
+      deletePlayer: bindActionCreators(playerActions.deletePlayer, dispatch)
     }
   };
 }

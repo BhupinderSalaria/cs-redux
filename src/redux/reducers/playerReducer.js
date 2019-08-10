@@ -12,6 +12,8 @@ export default function playerReducer(state = intialState.players, action) {
       );
     case types.LOAD_PLAYERS_SUCCESS:
       return action.players;
+    case types.DELETE_PLAYER_OPTIMISTIC:
+      return state.filter(player => player.id !== action.player.id);
     default:
       return state;
   }
