@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import TextInput from "../common/TextInput";
 import SelectInput from "../common/SelectInput";
 
-const PlayerForm = ({
-  player,
-  coaches,
+const CoachForm = ({
+  coach,
+  games,
   onSave,
   onChange,
   saving = false,
@@ -13,7 +13,7 @@ const PlayerForm = ({
 }) => {
   return (
     <form onSubmit={onSave}>
-      <h2>{player.id ? "Edit" : "Add"} Player</h2>
+      <h2>{coach.id ? "Edit" : "Add"} Coach</h2>
       {errors.onSave && (
         <div className="alert alert-danger" role="alert">
           {errors.onSave}
@@ -22,30 +22,30 @@ const PlayerForm = ({
       <TextInput
         name="name"
         label="Name"
-        value={player.name}
+        value={coach.name}
         onChange={onChange}
         error={errors.name}
       />
 
       <SelectInput
-        name="coachId"
-        label="Coach"
-        value={player.coachId || ""}
-        defaultOption="Select Coach"
-        options={coaches.map(coach => ({
-          value: coach.id,
-          text: coach.name
+        name="gameId"
+        label="Game"
+        value={coach.gameId || ""}
+        defaultOption="Select Game"
+        options={games.map(game => ({
+          value: game.id,
+          text: game.name
         }))}
         onChange={onChange}
-        error={errors.coach}
+        error={errors.game}
       />
 
       <TextInput
-        name="game"
-        label="Game"
-        value={player.game}
+        name="experience"
+        label="Experience"
+        value={coach.experience}
         onChange={onChange}
-        error={errors.game}
+        error={errors.experience}
       />
 
       <button type="submit" disabled={saving} className="btn btn-primary">
@@ -55,13 +55,13 @@ const PlayerForm = ({
   );
 };
 
-PlayerForm.propTypes = {
-  coaches: PropTypes.array.isRequired,
-  player: PropTypes.object.isRequired,
+CoachForm.propTypes = {
+  games: PropTypes.array.isRequired,
+  coach: PropTypes.object.isRequired,
   errors: PropTypes.object,
   onSave: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
   saving: PropTypes.bool
 };
 
-export default PlayerForm;
+export default CoachForm;

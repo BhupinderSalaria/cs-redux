@@ -10,3 +10,6 @@ export const API_CALL_ERROR = "API_CALL_ERROR";
 // If it had one, our apiCallsInProgress counter would be decremented below zero
 // because we're not incrementing the number of apiCallInProgress when the delete request begins.
 export const DELETE_PLAYER_OPTIMISTIC = "DELETE_PLAYER_OPTIMISTIC";
+export const LOAD_GAMES_SUCCESS = "LOAD_GAMES_SUCCESS";
+export const CREATE_COACH_SUCCESS = "CREATE_COACH_SUCCESS";
+export const UPDATE_COACH_SUCCESS = "UPDATE_COACH_SUCCESS";

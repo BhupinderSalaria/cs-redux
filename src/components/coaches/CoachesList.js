@@ -8,7 +8,7 @@ const CoachesList = ({ coaches }) => (
       <tr>
         <th>Id</th>
         <th>Name</th>
-        <th>Game Id</th>
+        <th>Game Name</th>
         <th>Experience(Yrs)</th>
         <th />
       </tr>
@@ -21,7 +21,7 @@ const CoachesList = ({ coaches }) => (
             <td>
               <Link to={"/coach/" + coach.id}>{coach.name}</Link>
             </td>
-            <td>{coach.gameId}</td>
+            <td>{coach.gameName}</td>
             <td>{coach.experience}</td>
             <td />
           </tr>

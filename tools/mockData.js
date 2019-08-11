@@ -77,6 +77,15 @@ const coaches = [
   { id: 3, name: "Dan Wahlin", gameId: 3, experience: 13 }
 ];
 
+const games = [
+  { id: 1, name: "Cricket" },
+  { id: 2, name: "Basketball" },
+  { id: 3, name: "Volleyball" },
+  { id: 4, name: "Football" },
+  { id: 5, name: "Badminton" },
+  { id: 6, name: "Tennis" }
+];
+
 const newPlayer = {
   id: null,
   name: "",
@@ -84,9 +93,18 @@ const newPlayer = {
   game: ""
 };
 
+const newCoach = {
+  id: null,
+  name: "",
+  gameId: null,
+  experience: ""
+};
+
 // Using CommonJS style export so we can consume via Node (without using Babel-node)
 module.exports = {
   newPlayer,
+  newCoach,
   players,
-  coaches
+  coaches,
+  games
 };
