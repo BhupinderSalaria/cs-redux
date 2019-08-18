@@ -72,18 +72,30 @@ const players = [
 ];
 
 const coaches = [
-  { id: 1, name: "Cory House", gameId: 1, experience: 10 },
-  { id: 2, name: "Scott Allen", gameId: 2, experience: 14 },
-  { id: 3, name: "Dan Wahlin", gameId: 3, experience: 13 }
+  { id: 1, name: "Cory House", gameId: 1, experience: 10, phoneno: 9888484843 },
+  {
+    id: 2,
+    name: "Scott Allen",
+    gameId: 2,
+    experience: 14,
+    phoneno: 5554234234
+  },
+  {
+    id: 3,
+    name: "Dan Wahlin",
+    gameId: 3,
+    experience: 13,
+    phoneno: 124234234434
+  }
 ];
 
 const games = [
-  { id: 1, name: "Cricket" },
-  { id: 2, name: "Basketball" },
-  { id: 3, name: "Volleyball" },
-  { id: 4, name: "Football" },
-  { id: 5, name: "Badminton" },
-  { id: 6, name: "Tennis" }
+  { id: 1, name: "Cricket", imgUrl: "Cricket.png" },
+  { id: 2, name: "Basketball", imgUrl: "Basketball.png" },
+  { id: 3, name: "Volleyball", imgUrl: "Volleyball.jpg" },
+  { id: 4, name: "Tennis", imgUrl: "Tennis.jpg" },
+  { id: 5, name: "Football", imgUrl: "Football.png" },
+  { id: 6, name: "Badminton", imgUrl: "Badminton.png" }
 ];
 
 const newPlayer = {

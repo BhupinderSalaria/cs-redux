@@ -5,9 +5,9 @@ import { loadGames } from "../../redux/actions/gameActions";
 import PropTypes from "prop-types";
 import CoachesList from "./CoachesList";
 import Spinner from "../common/Spinner";
-//import { Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 function CoachesPage({ coaches, games, loadCoaches, loadGames, ...props }) {
-  // const [redirectToAddCoachPage, setRedirectToAddCoachPage] = useState(false);
+  const [redirectToAddCoachPage, setRedirectToAddCoachPage] = useState(false);
 
   useEffect(() => {
     //debugger;
@@ -25,13 +25,13 @@ function CoachesPage({ coaches, games, loadCoaches, loadGames, ...props }) {
     }
   }, []);
 
-  // var handleRedirectToAddCoachPage = () => {
-  //   setRedirectToAddCoachPage(true);
-  // };
+  var handleRedirectToAddCoachPage = () => {
+    setRedirectToAddCoachPage(true);
+  };
 
   return (
     <>
-      {/* {redirectToAddCoachPage && <Redirect to="/coach" />} */}
+      {redirectToAddCoachPage && <Redirect to="/coach" />}
       <h2>Coaches</h2>
 
       {props.loading ? (
@@ -41,7 +41,7 @@ function CoachesPage({ coaches, games, loadCoaches, loadGames, ...props }) {
           <button
             style={{ marginBottom: 20 }}
             className="btn btn-primary add-coach"
-            //onClick={handleRedirectToAddCoachPage}
+            onClick={handleRedirectToAddCoachPage}
           >
             ADD Coach
           </button>
